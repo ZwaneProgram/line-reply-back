@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINE LIFF Example</title>
+</head>
+<body>
+    <h1>LINE LIFF Example</h1>
+    <button onclick="loginWithLine()">Login with LINE</button>
+    <div id="uid"></div>
+
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+        async function loginWithLine() {
+            try {
+                await liff.init({ liffId: '2005619719-kO70VJrD' });
+                if (!liff.isLoggedIn()) {
+                    liff.login();
+                } else {
+                    const profile = await liff.getProfile();
+                    document.getElementById('uid').innerText = `UID: ${profile.userId}`;
+                }
+            } catch (error) {
+                console.error('Error initializing LIFF:', error);
+            }
+        }
+    </script>
+</body>
+</html>
