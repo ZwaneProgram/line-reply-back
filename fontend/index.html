@@ -8,23 +8,52 @@
 <body>
     <h1>LINE LIFF Example</h1>
     <button onclick="loginWithLine()">Login with LINE</button>
+    <button onclick="logoutFromLine()">Sign Out</button>
     <div id="uid"></div>
 
+    <!-- Include LIFF SDK -->
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
     <script>
-        async function loginWithLine() {
+        async function initLineLiff() {
             try {
-                await liff.init({ liffId: '2005619719-kO70VJrD' });
-                if (!liff.isLoggedIn()) {
-                    liff.login();
-                } else {
+                await liff.init({ liffId: '2005619719-kO70VJrD' }); // Replace with your LIFF ID
+                if (liff.isLoggedIn()) {
                     const profile = await liff.getProfile();
-                    document.getElementById('uid').innerText = `UID: ${profile.userId}`;
+                    displayUserId(profile.userId);
                 }
             } catch (error) {
                 console.error('Error initializing LIFF:', error);
             }
         }
+
+        async function loginWithLine() {
+            try {
+                if (!liff.isLoggedIn()) {
+                    await liff.login();
+                    const profile = await liff.getProfile();
+                    displayUserId(profile.userId);
+                }
+            } catch (error) {
+                console.error('Error logging in:', error);
+            }
+        }
+
+        function logoutFromLine() {
+            if (liff.isLoggedIn()) {
+                liff.logout();
+                document.getElementById('uid').innerText = ''; // Clear UID display
+            }
+        }
+
+        function displayUserId(userId) {
+            document.getElementById('uid').innerText = `UID: ${userId}`;
+        }
+
+        // Initialize LIFF on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initLineLiff();
+        });
     </script>
 </body>
 </html>
