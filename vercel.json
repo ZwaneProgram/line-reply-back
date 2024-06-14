@@ -2,11 +2,15 @@
     "version": 2,
     "builds": [
       { "src": "backend/index.js", "use": "@vercel/node" },
-      { "src": "frontend/index.html", "use": "@vercel/static" }
+      { "src": "public/**", "use": "@vercel/static" }
     ],
     "routes": [
       { "src": "/webhook", "dest": "backend/index.js" },
-      { "src": "/(.*)", "dest": "frontend/index.html" }
+      { "handle": "filesystem" },
+      {
+        "src": "/(.*)",
+        "dest": "/public/index.html"
+      }
     ]
   }
   
