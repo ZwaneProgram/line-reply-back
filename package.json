@@ -11,10 +11,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./backend/index.js",
-    "client": "python3 -m http.server --directory fontend 8888",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "nodemon ./backend/index.js",
+  "client": "python3 -m http.server --directory frontend 8888",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
   "author": "",
   "license": "ISC",
   "description": ""
