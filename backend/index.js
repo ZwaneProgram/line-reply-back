@@ -1,5 +1,6 @@
+//chatgot improve code + random node code + line api docs code
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');//middle where
 const axios = require('axios');
 
 const app = express();
