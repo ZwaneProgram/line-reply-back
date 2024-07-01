@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@
     <script>
         async function initLineLiff() {
             try {
-                await liff.init({ liffId: '2005619719-kO70VJrD' }); // Replace with your LIFF ID
+                await liff.init({ liffId: '2005619719-kO70VJrD' });
                 if (liff.isLoggedIn()) {
                     const profile = await liff.getProfile();
                     displayUserId(profile.userId);
@@ -26,7 +27,7 @@
                 console.error('Error initializing LIFF:', error);
             }
         }
-
+//help me chat gpt
         function displayUserId(userId) {
             document.getElementById('uid').innerText = `UID: ${userId}`;
         }
