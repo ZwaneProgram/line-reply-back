@@ -1,4 +1,3 @@
-<!--fontend for UID ONLY. Notthing interact with backend-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +7,6 @@
 </head>
 <body>
     <h1>LINE LIFF Example</h1>
-    <button onclick="loginWithLine()">Login with LINE</button>
-    <button onclick="logoutFromLine()">Sign Out</button>
     <div id="uid"></div>
 
     <!-- Include LIFF SDK -->
@@ -22,28 +19,11 @@
                 if (liff.isLoggedIn()) {
                     const profile = await liff.getProfile();
                     displayUserId(profile.userId);
+                } else {
+                    await liff.login();
                 }
             } catch (error) {
                 console.error('Error initializing LIFF:', error);
-            }
-        }
-
-        async function loginWithLine() {
-            try {
-                if (!liff.isLoggedIn()) {
-                    await liff.login();
-                    const profile = await liff.getProfile();
-                    displayUserId(profile.userId);
-                }
-            } catch (error) {
-                console.error('Error logging in:', error);
-            }
-        }
-
-        function logoutFromLine() {
-            if (liff.isLoggedIn()) {
-                liff.logout();
-                document.getElementById('uid').innerText = ''; // Clear UID display
             }
         }
 

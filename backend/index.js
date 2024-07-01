@@ -1,7 +1,5 @@
-//chatgot improve code + random node code + line api docs code
-//*** fontend folder should be public if not it will not working ***/
 const express = require('express');
-const bodyParser = require('body-parser');//middle where
+const bodyParser = require('body-parser'); // Middleware
 const axios = require('axios');
 
 const app = express();
